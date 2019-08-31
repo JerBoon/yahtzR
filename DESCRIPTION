@@ -1,12 +1,13 @@
 Package: yahtzR
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Play the game of yathtzee in an R session
+Version: 0.0.1
+Author: Jer Boon
+Maintainer: Jer Boon <jer.booner@gmail.com>
+Description: 
+  Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
+  important machine learning or whatevs.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

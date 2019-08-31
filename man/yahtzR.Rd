@@ -7,12 +7,17 @@
 yahtzR(work.mode = F)
 }
 \arguments{
-\item{work.mode}{Logical. If TRUE, then display the game in a manner which looks like you're working!
+\item{work.mode}{Logical. If TRUE, then display the game in a manner which looks a bit
+  more like you're actually working!
 
   N.B. I accept no responsibility if your boss still notices!}
 }
 \description{
 Play the game of yahtzee in an R session
+}
+\details{
+Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
+important machine learning or whatevs.
 }
 \examples{
   yahtzR(work.mode=T)
