@@ -32,5 +32,7 @@ yahtzR <- function(work.mode=F) {
 
   game <- do_dice_rolls(game, work.mode)
 
-  print(game)
+  game <- calc_available(game)
+
+  print_card(game,work.mode)
 }
