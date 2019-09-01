@@ -6,12 +6,12 @@ calc_available <- function(game) {
 
   # the simple scores
   t <- game$table
-  t[t$section == "x1","score.available"] <- sum(game$dice == 1) * 1
-  t[t$section == "x2","score.available"] <- sum(game$dice == 2) * 2
-  t[t$section == "x3","score.available"] <- sum(game$dice == 3) * 3
-  t[t$section == "x4","score.available"] <- sum(game$dice == 4) * 4
-  t[t$section == "x5","score.available"] <- sum(game$dice == 5) * 5
-  t[t$section == "x6","score.available"] <- sum(game$dice == 6) * 6
+  t[t$section == "1s","score.available"] <- sum(game$dice == 1) * 1
+  t[t$section == "2s","score.available"] <- sum(game$dice == 2) * 2
+  t[t$section == "3s","score.available"] <- sum(game$dice == 3) * 3
+  t[t$section == "4s","score.available"] <- sum(game$dice == 4) * 4
+  t[t$section == "5s","score.available"] <- sum(game$dice == 5) * 5
+  t[t$section == "6s","score.available"] <- sum(game$dice == 6) * 6
   t[t$section == "ch","score.available"] <- sum(game$dice)
 
   # for the "of a kind" type scores, calculate a table of frequencies, then utilise that

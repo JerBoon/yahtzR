@@ -31,7 +31,7 @@ make_choice <- function(game, work.mode=F) {
   }
 
   ## recalculate totals etc
-  table[table$section=="ub", "score"] <- (sum(table[table$section %in% c("x1","x2","x3","x4","x5","x6"),"score"],na.rm=T) >= 63)*35
+  table[table$section=="ub", "score"] <- (sum(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"],na.rm=T) >= 63)*35
   table[table$section=="ut", "score"] <- sum(table[table$half == 1,"score"],na.rm=T)
   table[table$section=="lt", "score"] <- sum(table[table$half == 2,"score"],na.rm=T)
   table[table$section=="gt", "score"] <- sum(table[table$half %in% c(1,2),"score"],na.rm=T)

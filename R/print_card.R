@@ -25,7 +25,34 @@ print_card <- function(game,work.mode=F) {
 
     cat("\014")
 
-    print(game$table[,c(2,3,4,5)])
+    p <- game$table
+    p$print <- sprintf("|%2s|%-14s|%4d|%+3d|",
+                       p$section,
+                       p$name,
+                       as.integer(p$score),
+                       as.integer(p$score.available))
+    p$print <- gsub("NA","  ",p$print)
+
+    edge <- "+--+--------------+----+---+"
+    add.totals <- F
+    if (sum(!is.na(p$score.available)) == 0) {
+      add.totals <- T
+      p$print <- substr(p$print,4,24)
+      edge <- substr(edge,4,24)
+    }
+    out <- p[p$half == 1,"print"]
+    out <- cbind(out,p[p$half == 2,"print"])
+
+    cat(sprintf("%s %s\n",edge,edge))
+    cat(sprintf("%s %s\n", out[,1], out[,2]), sep="")
+    cat(sprintf("%s %s\n",edge,edge))
+
+    if (add.totals) {
+      cat(sprintf("|Lower total     %3d| |                   |\n",p[p$section=="ut","score"]))
+      cat(sprintf("|Upper total    %4d| |TOTAL          %4d|\n",p[p$section=="lt","score"],p[p$section=="gt","score"]))
+      cat("+-------------------+ +-------------------+\n")
+    }
+    print_dice(game$dice)
 
   }
 

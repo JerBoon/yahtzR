@@ -15,11 +15,13 @@ do_dice_rolls <- function(game,work.mode=F) {
     }
 
     if (!something_went_qrong) {
-      if (!work.mode)
+      if (!work.mode) {
         cat("\014")
-      print_dice(game$dice,work.mode)
-      if (!work.mode)
+        print_card(game,work.mode)
         cat("Enter positions of dice to reroll\n")
+      } else {
+        print_dice(game$dice,work.mode)
+      }
     }
     something_went_qrong <- F
 

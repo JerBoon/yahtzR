@@ -5,7 +5,7 @@ init_game <- function() {
 
   t <- data.frame(
     half=c(1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3),
-    section=c("x1","x2","x3","x4","x5","x6","ub","3k","4k","fh","ss","ls","yz","ch","ut","lt","gt"),
+    section=c("1s","2s","3s","4s","5s","6s","ub","3k","4k","fh","ss","ls","yz","ch","ut","lt","gt"),
     name=c("Aces","Twos","Threes","Fours","Fives","Sixes","Upper bonus",
            "3 of a kind","4 of a kind","Full house","Small straight","Long straight",
            "Yahtzee","Chance",
