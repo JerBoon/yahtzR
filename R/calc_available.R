@@ -18,7 +18,7 @@ calc_available <- function(game) {
   x <- sort(table(game$dice),decreasing=T)
   t[t$section == "3k","score.available"] <- (x[1] >= 3)*sum(game$dice)
   t[t$section == "4k","score.available"] <- (x[1] >= 4)*sum(game$dice)
-  t[t$section == "yz","score.available"] <- (x[1] == 4)*50
+  t[t$section == "yz","score.available"] <- (x[1] == 5)*50
   t[t$section == "fh","score.available"] <- (x[1] == 3)*(x[2] == 2)*25
 
   #and then the staights..
@@ -28,6 +28,8 @@ calc_available <- function(game) {
   t[t$section == "ls","score.available"] <- (x %in% c("12345","23456"))*40
 
 
+  ### NA any options which have already been taken
+  t$score.available[!is.na(t$score)] <- NA
 
   game$table <- t
   return(game)

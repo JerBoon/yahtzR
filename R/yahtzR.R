@@ -30,7 +30,7 @@ yahtzR <- function(work.mode=F) {
 
   game <- init_game()
 
-  for (i in 1:4) {
+  while( sum(is.na(game$table$score)) > 0 ) {
     game <- do_dice_rolls(game, work.mode)
     if (class(game) != "list") {
       if (!work.mode) cat("bye then\n")
