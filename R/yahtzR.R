@@ -30,9 +30,22 @@ yahtzR <- function(work.mode=F) {
 
   game <- init_game()
 
-  game <- do_dice_rolls(game, work.mode)
+  for (i in 1:4) {
+    game <- do_dice_rolls(game, work.mode)
+    if (class(game) != "list") {
+      if (!work.mode) cat("bye then\n")
+      return(invisible(NA))
+    }
 
-  game <- calc_available(game)
+    game <- calc_available(game)
 
-  print_card(game,work.mode)
+    game <- make_choice(game,work.mode)
+    if (class(game) != "list") {
+      if (!work.mode) cat("bye then\n")
+      return(invisible(NA))
+    }
+
+    print_card(game,work.mode)
+  }
+
 }

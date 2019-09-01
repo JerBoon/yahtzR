@@ -4,6 +4,7 @@
 
 do_dice_rolls <- function(game,work.mode=F) {
 
+  game$rolls <- 0
   something_went_qrong <- F
 
   while(game$rolls < 3) {
@@ -28,7 +29,7 @@ do_dice_rolls <- function(game,work.mode=F) {
       game$rolls <- 3
       break
     } else if (input == "quit") {
-      return(0)
+      return(NA)
     } else if (length(grep("^[1-5]+$",input)) == 1) {
       game$dice <- roll_dice_once(game$dice,which=input)
       game$rolls <- game$rolls + 1
