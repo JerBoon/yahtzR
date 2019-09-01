@@ -8,6 +8,10 @@
 #' Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
 #' important machine learning or whatever.
 #'
+#' Work mode prints minimal help messages and prompting, but accepts exactly the same inputs
+#' as regular mode. It assumes that you have already played in regular (verbose) mode and
+#' therefore understand what inputs are available at the various prompts.
+#'
 #' @param work.mode Logical. If TRUE, then display the game in a manner which looks a bit
 #'   more like you're actually working!
 #'
@@ -25,7 +29,7 @@ yahtzR <- function(work.mode=F) {
     message("Welcome to yahtzR")
     message("")
     message("initialising...")
-    Sys.sleep(0.2)
+    Sys.sleep(0.5)
   }
 
   game <- init_game()

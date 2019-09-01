@@ -17,7 +17,11 @@ Play the game of yahtzee in an R session
 }
 \details{
 Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
-important machine learning or whatevs.
+important machine learning or whatever.
+
+Work mode prints minimal help messages and prompting, but accepts exactly the same inputs
+as regular mode. It assumes that you have already played in regular (verbose) mode and
+therefore understand what inputs are available at the various prompts.
 }
 \examples{
   yahtzR(work.mode=T)
