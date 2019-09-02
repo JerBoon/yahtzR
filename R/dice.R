@@ -18,9 +18,9 @@ do_dice_rolls <- function(game,work.mode=F) {
       if (!work.mode) {
         cat("\014")
         print_card(game,work.mode)
-        cat("Enter positions of dice to reroll\n")
+        cat(paste0("Roll ",game$rolls,": Enter positions of dice to reroll\n"))
       } else {
-        print_dice(game$dice,work.mode)
+        print_dice(game$dice, rolls=game$rolls, work.mode=work.mode)
       }
     }
     something_went_qrong <- F
@@ -76,7 +76,7 @@ roll_dice_once <- function (current = NA, which = NA) {
 
 # --------------------------------------------------------------------------------------------
 
-print_dice <- function(d, work.mode=F) {
+print_dice <- function(d, work.mode=F, rolls = 1) {
 
   if (max(is.na(d)))
     return()
@@ -86,7 +86,9 @@ print_dice <- function(d, work.mode=F) {
   c3 <- c("     ", "  o  ", "o    ", "o   o", "o   o", "o   o")
 
   if (work.mode) {
-    print(d)
+    cat(paste0("[",rolls,"] "))
+    cat(d)
+    cat("\n")
   } else {
     cat("   -----   -----   -----   -----   ----- \n")
     cat(paste0("  |",c1[d[1]],"| |",c1[d[2]],"| |",c1[d[3]],"| |",c1[d[4]],"| |",c1[d[5]],"|\n"))

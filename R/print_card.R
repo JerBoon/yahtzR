@@ -4,6 +4,7 @@ print_card <- function(game,work.mode=F) {
 
   if (work.mode) {
 
+    cat("[[1]]\n")
     p <- game$table[,c(2,4,5)]
 
     # having columns called "score" is suspicious.. :)
@@ -20,6 +21,8 @@ print_card <- function(game,work.mode=F) {
       p$val.new <- NULL
 
     print(p)
+
+    cat("\n[[2]]\n")
 
   } else {   # ------------------------
 
@@ -52,8 +55,8 @@ print_card <- function(game,work.mode=F) {
       cat(sprintf("|Lower total    %4d| |TOTAL          %4d|\n",p[p$section=="lt","score"],p[p$section=="gt","score"]))
       cat("+-------------------+ +-------------------+\n")
     }
-    print_dice(game$dice)
-
   }
+
+  print_dice(game$dice, rolls=game$rolls, work.mode=work.mode)
 
 }
