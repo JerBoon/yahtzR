@@ -7,7 +7,7 @@
 
 calc_available <- function(game) {
 
-  ### -- first calc possible scores for all scoring patterns
+  ### ---- first calc possible scores for all scoring patterns ----
 
   # the simple scores
   t <- game$table
@@ -28,12 +28,31 @@ calc_available <- function(game) {
 
   #and then the staights..
   #calculate ordered string of distinct die values from the frequency table
-  x <- paste(sort(names(x)),sep="",collapse="")
-  t[t$section == "ss","score.available"] <- (grepl("1234",x) == 1 | grepl("2345",x) | grepl("3456",x))*30
-  t[t$section == "ls","score.available"] <- (x %in% c("12345","23456"))*40
+  x2 <- paste(sort(names(x)),sep="",collapse="")
+  t[t$section == "ss","score.available"] <- (grepl("1234",x2) == 1 | grepl("2345",x2) | grepl("3456",x2))*30
+  t[t$section == "ls","score.available"] <- (x2 %in% c("12345","23456"))*40
 
+  ### ---- Apply Joker rules ----
+  # As per Forced Joker rules, as stated on wikipedia page
+  if (x[1] == 5 & !is.na(t[t$section == "yz","score"])) {
 
-  ### NA any options which have already been taken
+    # (1) yahtzee score += 100 if have already positively scored for a previous yahtzee
+    if (t[t$section == "yz","score"] > 0)
+      t[t$section == "yz","score"] <- t[t$section == "yz","score"] + 100
+
+    # (2a) if the corresponding upper section is availabel - that must be selected
+    if (is.na(t[t$section == paste0(names(x)[1],"s"),"score"])) {
+      t[t$section != paste0(names(x)[1],"s"),"score.available"] <- NA
+
+    # (2b) Else if lower options are avilable, must pick one of those
+    # Plus fh, ls and ss are available as jokers
+    } else {
+    }
+    # (2c) If no lower options available, stuck with choosing an upper
+
+  }
+
+  ### ---- NA any options which have already been taken ----
   t$score.available[!is.na(t$score)] <- NA
 
   game$table <- t
