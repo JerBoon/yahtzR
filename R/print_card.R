@@ -48,8 +48,8 @@ print_card <- function(game,work.mode=F) {
     cat(sprintf("%s %s\n",edge,edge))
 
     if (add.totals) {
-      cat(sprintf("|Lower total     %3d| |                   |\n",p[p$section=="ut","score"]))
-      cat(sprintf("|Upper total    %4d| |TOTAL          %4d|\n",p[p$section=="lt","score"],p[p$section=="gt","score"]))
+      cat(sprintf("|Upper total     %3d| |                   |\n",p[p$section=="ut","score"]))
+      cat(sprintf("|Lower total    %4d| |TOTAL          %4d|\n",p[p$section=="lt","score"],p[p$section=="gt","score"]))
       cat("+-------------------+ +-------------------+\n")
     }
     print_dice(game$dice)
