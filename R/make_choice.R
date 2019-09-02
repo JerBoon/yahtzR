@@ -47,8 +47,15 @@ make_choice <- function(game, work.mode=F) {
 
   }
 
-  ## recalculate totals etc
-  table[table$section=="ub", "score"] <- (sum(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"],na.rm=T) >= 63)*35
+  ## calculate upper bonus
+  if (sum(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"],na.rm=T) >= 63) {
+    table[table$section=="ub", "score"] <- 35
+  } else {
+    if (sum(!is.na(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"])) == 6)
+      table[table$section=="ub", "score"] <- 0
+  }
+
+  ## recalculate totals
   table[table$section=="ut", "score"] <- sum(table[table$half == 1,"score"],na.rm=T)
   table[table$section=="lt", "score"] <- sum(table[table$half == 2,"score"],na.rm=T)
   table[table$section=="gt", "score"] <- sum(table[table$half %in% c(1,2),"score"],na.rm=T)
