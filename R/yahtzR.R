@@ -52,4 +52,6 @@ yahtzR <- function(work.mode=F) {
     print_card(game,work.mode)
   }
 
+  cat("\n")
+
 }

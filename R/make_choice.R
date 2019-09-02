@@ -37,6 +37,8 @@ make_choice <- function(game, work.mode=F) {
   table[table$section=="gt", "score"] <- sum(table[table$half %in% c(1,2),"score"],na.rm=T)
 
   game$table <- table
+  game$dice <- NA
+
   return(game)
 
 }

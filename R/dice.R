@@ -78,6 +78,9 @@ roll_dice_once <- function (current = NA, which = NA) {
 
 print_dice <- function(d, work.mode=F) {
 
+  if (max(is.na(d)))
+    return()
+
   c1 <- c("     ", "  o  ", "    o", "o   o", "o   o", "o   o")
   c2 <- c("  o  ", "     ", "  o  ", "     ", "  o  ", "o   o")
   c3 <- c("     ", "  o  ", "o    ", "o   o", "o   o", "o   o")
