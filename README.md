@@ -1,6 +1,6 @@
 # yahtzR
 
-Play the game of yathtzee in an R session.
+Play the game of yahtzee in an R session.
 
 Because why not?
 
