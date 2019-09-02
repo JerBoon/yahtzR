@@ -76,6 +76,11 @@ roll_dice_once <- function (current = NA, which = NA) {
 
 # --------------------------------------------------------------------------------------------
 
+# Print the current 5 die values, either as ascii art, or if in work.mode
+# as a faux vector output - "[1] 3 3 2 5 6" (where the value in bracket is actually
+# the roll number - which I appreciate is a slight concession to making it look *exactly*
+# like you're working... :)
+
 print_dice <- function(d, work.mode=F, rolls = 1) {
 
   if (max(is.na(d)))

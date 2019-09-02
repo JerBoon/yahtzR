@@ -24,16 +24,19 @@
 #'
 yahtzR <- function(work.mode=F) {
 
+  # Welcome message
   if (!work.mode) {
     cat("\014")
-    message("Welcome to yahtzR")
+    message(paste0("Welcome to yahtzR v",packageVersion("yahtzR")))
     message("")
     message("initialising...")
-    Sys.sleep(0.5)
+    Sys.sleep(1)
   }
 
+  # initialise
   game <- init_game()
 
+  # loop until the scorecard is full
   while( sum(is.na(game$table$score)) > 0 ) {
     game <- do_dice_rolls(game, work.mode)
     if (class(game) != "list") {

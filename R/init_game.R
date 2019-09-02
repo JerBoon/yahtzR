@@ -1,5 +1,7 @@
 
 # Internal function to set up a new game
+# Takes the form of a list of the various objects required
+# to define current game scorecard, status, and dice rolls etc
 
 init_game <- function() {
 

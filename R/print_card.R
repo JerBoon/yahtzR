@@ -1,4 +1,9 @@
 
+# Print score card, plus if applicable the latest dice roll
+# Displays in 2 different styles, depending on whether you're in work.mode
+# or not.
+# Also displays extra information in the card (score you'd increase by if chosen)
+# if it precedes an input to select your scoring move.
 
 print_card <- function(game,work.mode=F) {
 
@@ -24,7 +29,7 @@ print_card <- function(game,work.mode=F) {
 
     cat("\n[[2]]\n")
 
-  } else {   # ------------------------
+  } else {   # ------------------------ not work mode -----
 
     cat("\014")
 

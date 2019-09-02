@@ -1,4 +1,11 @@
 
+# Get user input of chosen scoring move
+# The input value of game$table will already contain scoring values
+# in its score.available column - which this function uses to supply
+# its vector of acceptable inputs
+# Once valid option is made, the function also updates the total for that option
+# and sub/grand totals
+
 make_choice <- function(game, work.mode=F) {
 
   print_card(game,work.mode)
