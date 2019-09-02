@@ -19,9 +19,17 @@ make_choice <- function(game, work.mode=F) {
   while (is.na(choice)) {
 
     if (!work.mode) {
-      cat("Make score selection.\n- Type a scoring move from: ")
-      cat(paste(sections.available, collapse=" "))
-      cat("\n- type quit to, er, quit\n")
+      if (!something_went_wrong) {
+        cat("Make score selection.\n")
+      } else {
+        cat("Unexpected input. Valid entries are:\n")
+        cat("- a scoring move from: ")
+        cat(paste(sections.available, collapse=" "))
+        cat("\n- type quit to, er, quit\n")
+      }
+    } else {
+      if (something_went_wrong)
+        cat("??\n")
     }
 
     input <- tolower(readline(prompt=">> "))
@@ -33,6 +41,8 @@ make_choice <- function(game, work.mode=F) {
       table[table$section == input, "score"] <- table[table$section == input, "score.available"]
       table$score.available <- NA
       break
+    } else {
+      something_went_wrong <- T
     }
 
   }
