@@ -14,8 +14,8 @@ Because why not?
 |Sixes         |    | |Yahtzee       |  50|
 |Upper bonus   |   0| |Chance        |  23|
 +--------------+----+ +--------------+----+
-|Lower total      20| |                   |
-|Upper total      98| |TOTAL           118|
+|Upper total      20| |                   |
+|Lower total      98| |TOTAL           118|
 +-------------------+ +-------------------+
    -----   -----   -----   -----   ----- 
   |  o  | |    o| |o   o| |o   o| |o   o|
