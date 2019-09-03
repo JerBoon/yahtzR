@@ -46,7 +46,12 @@ calc_available <- function(game) {
 
     # (2b) Else if lower options are avilable, must pick one of those
     # Plus fh, ls and ss are available as jokers
-    } else {
+    } else if (sum(is.na(t[t$half == 2, "score"])) > 0) {
+      t[t$half == 1, "score.available"] <- NA
+      t[t$section == "fh", "score.available"] <- 25
+      t[t$section == "ss", "score.available"] <- 30
+      t[t$section == "ls", "score.available"] <- 40
+
     }
     # (2c) If no lower options available, stuck with choosing an upper
 
