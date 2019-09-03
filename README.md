@@ -4,6 +4,8 @@ Play the game of yahtzee in an R session.
 
 Because why not?
 
+Latest version: [v1.0.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.0.0)
+
 ```
 +--------------+----+ +--------------+----+
 |Aces          |   0| |3 of a kind   |    |
@@ -23,4 +25,7 @@ Because why not?
   |  o  | |o    | |o   o| |o   o| |o   o|
    -----   -----   -----   -----   ----- 
 ```
+### Details
 
+Uses the _Forced Joker_ rules, as described at 
+[Wikipedia](https://en.wikipedia.org/wiki/Yahtzee).
