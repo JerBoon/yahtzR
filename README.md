@@ -28,8 +28,4 @@ Latest version: [v1.0.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.0.0)
 ### Details
 
 Uses the _Forced Joker_ rules, as described at 
-<<<<<<< HEAD
 [Wikipedia](https://en.wikipedia.org/wiki/Yahtzee).
-=======
-[Wikipedia](https://en.wikipedia.org/wiki/Yahtzee)
->>>>>>> baf07453fdefeda101f7be4e67583a467628c3d5
