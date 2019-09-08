@@ -48,12 +48,31 @@ print_card <- function(game,work.mode=F) {
       p$print <- substr(p$print,4,24)
       edge <- substr(edge,4,24)
     }
-    out <- p[p$half == 1,"print"]
-    out <- cbind(out,p[p$half == 2,"print"])
+
+    empty <- gsub("\\+","|",edge)
+    empty <- gsub("-"," ",empty)
+
+    # Print the main cards side-by-side, accounting for potential
+    # different lengths (in standard, they each have 7 rows, but
+    # in variants they may not)
+
+    l1 <- sum(p$half == 1)
+    l2 <- sum(p$half == 2)
+    out1 <- p[p$half == 1,"print"]
+    out2 <- p[p$half == 2,"print"]
 
     cat(sprintf("%s %s\n",edge,edge))
-    cat(sprintf("%s %s\n", out[,1], out[,2]), sep="")
+
+    for (i in 1:max(l1,l2)) {
+      cat(if(i <= l1) out1[i] else empty)
+      cat(" ")
+      cat(if(i <= l2) out2[i] else empty)
+      cat("\n")
+
+    }
     cat(sprintf("%s %s\n",edge,edge))
+
+    ## Print total summary box
 
     if (add.totals) {
       cat(sprintf("|Upper total     %3d| |                   |\n",p[p$section=="ut","score"]))
