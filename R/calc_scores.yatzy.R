@@ -25,7 +25,7 @@ calc_scores.yatzy <- function(game) {
   t[t$section == "4k","score.available"] <- (x[1] >= 4)*(as.integer(names(x)[1])*4)
   t[t$section == "yz","score.available"] <- (x[1] == 5)*50
   t[t$section == "fh","score.available"] <- (x[1] == 3)*(x[2] == 2)*sum(game$dice)
-  t[t$section == "1p","score.available"] <- (x[1] >= 2)*(max(as.integer(names(x)[x >= 2]))*2)
+  t[t$section == "1p","score.available"] <- {if (x[1] >= 2) (max(as.integer(names(x)[x >= 2]))*2) else 0}
   t[t$section == "2p","score.available"] <- (x[1] >= 2)*(length(x) > 1 & x[2] >= 2)*
                                             (sum(as.integer(names(x)[1:2]))*2)
 

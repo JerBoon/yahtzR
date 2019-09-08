@@ -1,6 +1,9 @@
 
 # S3 generic class definitions
 
+## Initialise game object (a list) with the various bits of information
+## the rest of the code will require
+
 init_game <- function(game, no_rolls_allowed) {
   UseMethod("init_game")
 }

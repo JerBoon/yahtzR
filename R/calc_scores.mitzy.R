@@ -23,7 +23,8 @@ calc_scores.mitzy <- function(game) {
   x <- sort(table(game$dice),decreasing=T)
   t[t$section == "3k","score.available"] <- (x[1] >= 3)*(as.integer(names(x)[1])*3)
   t[t$section == "4k","score.available"] <- (x[1] >= 4)*(as.integer(names(x)[1])*4)
-  t[t$section == "1p","score.available"] <- (x[1] >= 2)*(max(as.integer(names(x)[x >= 2]))*2)
+
+  t[t$section == "1p","score.available"] <- {if (x[1] >= 2) (max(as.integer(names(x)[x >= 2]))*2) else 0}
   t[t$section == "2p","score.available"] <- (x[1] >= 2)*(length(x) > 1 & x[2] >= 2)*
                                             (sum(as.integer(names(x)[1:2]))*2)
 
