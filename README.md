@@ -4,7 +4,11 @@ Play the game of yahtzee in an R session.
 
 Because why not?
 
-Latest version: [v1.0.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.0.0)
+Latest release: [v1.1.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.1.0)
+
+Previous releases:
+- [v1.0.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.0.0)
+
 
 ```
 +--------------+----+ +--------------+----+
