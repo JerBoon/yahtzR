@@ -10,7 +10,7 @@ do_dice_rolls <- function(game,work.mode=F) {
   while(game$rolls < game$no_rolls_allowed) {
 
     if (game$rolls == 0) {
-      game$dice <- roll_dice_once()
+      game$dice <- roll_dice_once(no_dice = game$no_dice)
       game$rolls <- 1
     }
 
@@ -41,8 +41,8 @@ do_dice_rolls <- function(game,work.mode=F) {
       break
     } else if (input == "quit") {
       return(NA)
-    } else if (length(grep("^[1-5]+$",input)) == 1) {
-      game$dice <- roll_dice_once(game$dice,which=input)
+    } else if (length(grep(paste0("^[1-",game$no_dice,"]+$"),input)) == 1) {
+      game$dice <- roll_dice_once(no_dice = game$no_dice, current = game$dice, which=input)
       game$rolls <- game$rolls + 1
     } else if (input %in% c("help","?")) {
       if (!work.mode) {
@@ -65,17 +65,18 @@ do_dice_rolls <- function(game,work.mode=F) {
 
 # --------------------------------------------------------------------------------------------
 
+# "no_dice" is the number of dice available (i.e. 5 in a standard game)
 # "current" is a vector of the current values, if applicable
 # "which" is either a character sting containing the numeric positions of the dice to re-roll
 #         or if NA, all will be rolled anew
 
-roll_dice_once <- function (current = NA, which = NA) {
+roll_dice_once <- function (no_dice, current = NA, which = NA) {
 
   if (is.na(which)) {
-    return (sample(1:6,5,replace=T))
+    return (sample(1:6, no_dice, replace=T))
   }
 
-  for (i in 1:5) {
+  for (i in 1:no_dice) {
     if (length(grep(as.character(i),which)) == 1) {
       current[i] <- sample(1:6,1)
     }
@@ -106,11 +107,18 @@ print_dice <- function(d, work.mode=F, rolls) {
     cat(d)
     cat("\n")
   } else {
-    cat("   -----   -----   -----   -----   ----- \n")
-    cat(paste0("  |",c1[d[1]],"| |",c1[d[2]],"| |",c1[d[3]],"| |",c1[d[4]],"| |",c1[d[5]],"|\n"))
-    cat(paste0("  |",c2[d[1]],"| |",c2[d[2]],"| |",c2[d[3]],"| |",c2[d[4]],"| |",c2[d[5]],"|\n"))
-    cat(paste0("  |",c3[d[1]],"| |",c3[d[2]],"| |",c3[d[3]],"| |",c3[d[4]],"| |",c3[d[5]],"|\n"))
-    cat("   -----   -----   -----   -----   ----- \n")
+    box <- ""
+    line1 <- ""
+    line2 <- ""
+    line3 <- ""
+    for (i in 1:length(d))
+    {
+      box <- paste0(box,"  ----- ")
+      line1 <- paste0(line1, " |", c1[d[i]],"|")
+      line2 <- paste0(line2, " |", c2[d[i]],"|")
+      line3 <- paste0(line3, " |", c3[d[i]],"|")
+    }
+    cat(sprintf(" %s\n %s\n %s\n %s\n %s\n", box, line1, line2, line3,box))
   }
 
 }
