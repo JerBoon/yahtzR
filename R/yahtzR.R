@@ -14,6 +14,14 @@
 #'
 #' Type "help" or "?" at any prompt for more information.
 #'
+#' @param ruleset Character value. Name of ruleset to apply. Valid options are:
+#'
+#' \itemize{
+#'    \item "standard" - Regular "Forced Joker" rules.
+#'    \item "4 rolls" - standard rules, but with 4 rolls allowed per turn.
+#'    \item "5 rolls" - standard rules, but with 5 rolls allowed per turn.
+#' }
+#'
 #' @param work.mode Logical. If TRUE, then display the game in a manner which looks a bit
 #'   more like you're actually working!
 #'
@@ -24,7 +32,12 @@
 #' @examples
 #'   yahtzR(work.mode=T)
 #'
-yahtzR <- function(work.mode=F) {
+yahtzR <- function(ruleset = "standard", work.mode=F) {
+
+  if (!ruleset %in% c("standard","4 rolls","5 rolls")) {
+    message(paste0("Unknown ruleset option '",ruleset,"'"))
+    return()
+  }
 
   # Welcome message
   if (!work.mode) {
@@ -36,7 +49,7 @@ yahtzR <- function(work.mode=F) {
   }
 
   # initialise
-  game <- init_game()
+  game <- init_game(ruleset = ruleset)
 
   # loop until the scorecard is full
   while( sum(is.na(game$table$score)) > 0 ) {

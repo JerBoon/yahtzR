@@ -7,7 +7,7 @@ do_dice_rolls <- function(game,work.mode=F) {
   game$rolls <- 0
   supply_more_info <- F
 
-  while(game$rolls < 3) {
+  while(game$rolls < game$no_rolls_allowed) {
 
     if (game$rolls == 0) {
       game$dice <- roll_dice_once()
@@ -37,7 +37,7 @@ do_dice_rolls <- function(game,work.mode=F) {
     input <- tolower(readline(prompt=">> "))
 
     if (input == "") {
-      game$rolls <- 3
+      game$rolls <- game$no_rolls_allowed
       break
     } else if (input == "quit") {
       return(NA)
@@ -46,7 +46,7 @@ do_dice_rolls <- function(game,work.mode=F) {
       game$rolls <- game$rolls + 1
     } else if (input %in% c("help","?")) {
       if (!work.mode) {
-        cat("You can roll dice up to three times each turn.\n")
+        cat(paste("You can roll dice up to",game$no_rolls_allowed,"times each turn.\n"))
         cat("Select the positions of all dice you wish to reroll. Valid entries are:\n")
       }
       supply_more_info <- T

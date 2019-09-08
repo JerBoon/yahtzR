@@ -4,9 +4,17 @@
 \alias{yahtzR}
 \title{yahtzR}
 \usage{
-yahtzR(work.mode = F)
+yahtzR(ruleset = "standard", work.mode = F)
 }
 \arguments{
+\item{ruleset}{Character value. Name of ruleset to apply. Valid options are:
+
+\itemize{
+   \item "standard" - Regular "Forced joker" rules.
+   \item "4 rolls" - standard rules, but with 4 rolls allowed per turn.
+   \item "5 rolls" - standard rules, but with 5 rolls allowed per turn.
+}}
+
 \item{work.mode}{Logical. If TRUE, then display the game in a manner which looks a bit
   more like you're actually working!
 

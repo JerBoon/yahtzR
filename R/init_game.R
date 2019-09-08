@@ -3,7 +3,7 @@
 # Takes the form of a list of the various objects required
 # to define current game scorecard, status, and dice rolls etc
 
-init_game <- function() {
+init_game <- function(ruleset) {
 
   t <- data.frame(
     half=c(1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3),
@@ -20,8 +20,14 @@ init_game <- function() {
   x <- list(
     dice = NA,
     rolls = 0,
+    no_rolls_allowed = 3,
     table=t
   )
+
+  if (ruleset == "4 rolls")
+    x$no_rolls_allowed <- 4
+  else if (ruleset == "5 rolls")
+    x$no_rolls_allowed <- 5
 
   return(x)
 
