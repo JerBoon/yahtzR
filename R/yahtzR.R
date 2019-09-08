@@ -3,7 +3,7 @@
 
 #' yahtzR
 #'
-#' Play the game of yahtzee in an R session
+#' Play the game of yahtzee and/or some of its variations in an R session
 #'
 #' Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
 #' important machine learning or whatever.
@@ -14,14 +14,18 @@
 #'
 #' Type "help" or "?" at any prompt for more information.
 #'
-#' @param ruleset Character value. Name of ruleset to apply. Valid options are:
+#' @param variation Character value. Name of game variation and ruleset to apply. Valid options are:
 #'
 #' \itemize{
-#'    \item "standard" - Regular "Forced Joker" rules.
-#'    \item "4 rolls" - standard rules, but with 4 rolls allowed per turn.
-#'    \item "5 rolls" - standard rules, but with 5 rolls allowed per turn.
-#'    \item "mini" - version with only 4 dice.
+#'    \item "yahtzee" - Official Yahtzee game with "Forced Joker" rules.
+#'          \href{https://en.wikipedia.org/wiki/Yahtzee}{Wikipedia}
+#'    \item "yatzy" - The public domain variation of the game.
+#'          \href{https://en.wikipedia.org/wiki/Yatzy}{Wikipedia}
 #' }
+#'
+#' @param rolls_per_turn Integer value. The number of dice rolls allowed per turn.
+#'   Usually (and by default) 3, but can be changed to any other value to create your own bespoke
+#'   game variation.
 #'
 #' @param work.mode Logical. If TRUE, then display the game in a manner which looks a bit
 #'   more like you're actually working!
@@ -33,10 +37,13 @@
 #' @examples
 #'   yahtzR(work.mode=T)
 #'
-yahtzR <- function(ruleset = "standard", work.mode=F) {
+#'   #This is just a silly idea :)
+#'   yahtzR(variation="yatzy", rolls_per_turn = 10)
+#'
+yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE) {
 
-  if (!ruleset %in% c("standard", "4 rolls", "5 rolls", "mini")) {
-    message(paste0("Unknown ruleset option '",ruleset,"'"))
+  if (!variation %in% c("yahtzee", "yatzy")) {
+    message(paste0("Unknown rule variation option '",variation,"'"))
     return()
   }
 
@@ -50,12 +57,17 @@ yahtzR <- function(ruleset = "standard", work.mode=F) {
   }
 
   # initialise
-  game <- init_game(ruleset = ruleset)
+  game <- structure(list(), class = variation)
+
+  game <- init_game(game = game, no_rolls_allowed = rolls_per_turn)
 
   # loop until the scorecard is full
   while( sum(is.na(game$table$score)) > 0 ) {
     game <- do_dice_rolls(game, work.mode)
-    if (class(game) != "list") {
+
+    print(class(game))
+
+    if (class(game) != variation) {
       if (!work.mode) cat("bye then\n")
       return(invisible(NA))
     }
@@ -63,7 +75,7 @@ yahtzR <- function(ruleset = "standard", work.mode=F) {
     game <- calc_available(game)
 
     game <- make_choice(game,work.mode)
-    if (class(game) != "list") {
+    if (class(game) != variation) {
       if (!work.mode) cat("bye then\n")
       return(invisible(NA))
     }

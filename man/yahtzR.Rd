@@ -4,16 +4,21 @@
 \alias{yahtzR}
 \title{yahtzR}
 \usage{
-yahtzR(ruleset = "standard", work.mode = F)
+yahtzR(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE)
 }
 \arguments{
-\item{ruleset}{Character value. Name of ruleset to apply. Valid options are:
+\item{variation}{Character value. Name of game variation and ruleset to apply. Valid options are:
 
 \itemize{
-   \item "standard" - Regular "Forced joker" rules.
-   \item "4 rolls" - standard rules, but with 4 rolls allowed per turn.
-   \item "5 rolls" - standard rules, but with 5 rolls allowed per turn.
+   \item "yahtzee" - Official Yahtzee game with "Forced Joker" rules.
+         \href{https://en.wikipedia.org/wiki/Yahtzee}{Wikipedia}
+   \item "yatzy" - The public domain variation of the game.
+         \href{https://en.wikipedia.org/wiki/Yatzy}{Wikipedia}
 }}
+
+\item{rolls_per_turn}{Integer value. The number of dice rolls allowed per turn.
+Usually (and by default) 3, but can be changed to any other value to create your own bespoke
+game variation.}
 
 \item{work.mode}{Logical. If TRUE, then display the game in a manner which looks a bit
   more like you're actually working!
@@ -21,7 +26,7 @@ yahtzR(ruleset = "standard", work.mode = F)
   N.B. I accept no responsibility if your boss still notices!}
 }
 \description{
-Play the game of yahtzee in an R session
+Play the game of yahtzee and/or some of its variations in an R session
 }
 \details{
 Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
@@ -35,5 +40,8 @@ Type "help" or "?" at any prompt for more information.
 }
 \examples{
   yahtzR(work.mode=T)
+
+  #This is just a silly idea :)
+  yahtzR(variation="yatzy", rolls_per_turn = 10)
 
 }

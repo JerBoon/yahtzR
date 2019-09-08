@@ -9,12 +9,9 @@ calc_available <- function(game) {
 
   ### ---- first calc possible scores for all scoring patterns, using the appropriate rules ----
 
-  print(game)
-  t <- game$scoring_function(game)
+  #print(game)
+  t <- calc_scores(game)
   #t <- calc_scores.yahtzee(game)
-
-  ### ---- NA any options which have already been taken ----
-  t$score.available[!is.na(t$score)] <- NA
 
   game$table <- t
   return(game)

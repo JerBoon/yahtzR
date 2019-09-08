@@ -4,7 +4,7 @@
 # Uses three steps
 # 1 - Calculate available sores for all score types (including those already scored)
 # 2 - Apply any additional "joker" rules for subsequent yahtzees after first yahtzee has been chosen
-# 3 - NA any calculated scores for any options which have already been picked
+# 3 - NA any additional scores which have already been taken
 
 # Input = a score table
 calc_scores.yahtzee <- function(game) {
@@ -60,5 +60,28 @@ calc_scores.yahtzee <- function(game) {
 
   }
 
+  ### ---- NA any options which have already been taken ----
+  t$score.available[!is.na(t$score)] <- NA
+
   return(t)
+}
+
+## ---------------------------------------------------------------
+
+apply_bonuses.yahtzee <- function(game) {
+
+  table <- game$table
+
+  ## calculate upper bonus
+  if (sum(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"],na.rm=T) >= 63) {
+    table[table$section=="ub", "score"] <- 35
+  } else {
+    if (sum(!is.na(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"])) == 6)
+      table[table$section=="ub", "score"] <- 0
+  }
+
+  game$table <- table
+
+  return(game)
+
 }
