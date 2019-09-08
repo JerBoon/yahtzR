@@ -21,6 +21,8 @@
 #'          \href{https://en.wikipedia.org/wiki/Yahtzee}{Wikipedia}
 #'    \item "yatzy" - The public domain variation of the game.
 #'          \href{https://en.wikipedia.org/wiki/Yatzy}{Wikipedia}
+#'    \item "forced_yatzy" - Regular Yatzy, but you have to fill the card from top to
+#'          botoom (see previous wiki).
 #'    \item "mitzy" - a simplified, 4 dice game with rules similar to Yatzy.
 #' }
 #'
@@ -43,7 +45,7 @@
 #'
 yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE) {
 
-  if (!variation %in% c("yahtzee", "yatzy", "mitzy")) {
+  if (!variation %in% c("yahtzee", "yatzy", "mitzy", "forced_yatzy")) {
     message(paste0("Unknown rule variation option '",variation,"'"))
     return()
   }
