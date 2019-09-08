@@ -4,9 +4,10 @@ Play variations of the well-known dice rolling game in an R session.
 
 Because why not?
 
-Latest release: [v1.1.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.1.0)
+Latest release: [v1.2.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.2.0)
 
 Previous releases:
+- [v1.1.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.1.0)
 - [v1.0.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.0.0)
 
 
@@ -42,3 +43,6 @@ Available variations:
 - Yatzy (public domain game)
   - as per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy).
   
+- Mitzy (a 4-dice derivative-ish of Yatzy)
+  - Upper bonus value is 25, awarded for total of 42 or more.
+  - Introduces a "Mini straight" which is a 4 number straight, scores per the dice roll total.
