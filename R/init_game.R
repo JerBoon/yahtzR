@@ -7,17 +7,32 @@ init_game <- function(ruleset) {
 
   ## table for standard game scorecard
 
-  t <- data.frame(
-    half=c(1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3),
-    section=c("1s","2s","3s","4s","5s","6s","ub","3k","4k","fh","ss","ls","yz","ch","ut","lt","gt"),
-    name=c("Aces","Twos","Threes","Fours","Fives","Sixes","Upper bonus",
-           "3 of a kind","4 of a kind","Full house","Small straight","Long straight",
-           "Yahtzee","Chance",
-           "Upper total","Lower total","TOTAL"),
-    score=NA,
-    score.available=NA,
-    stringsAsFactors = F
-  )
+  # The 4-dice version of the score card
+  if (ruleset == "mini") {
+    t <- data.frame(
+      half=c(1,1,1,1,1,1,1,2,2,2,2,2,3,3,3),
+      section=c("1s","2s","3s","4s","5s","6s","ub","3k","4k","2p","ss","ch","ut","lt","gt"),
+      name=c("Aces","Twos","Threes","Fours","Fives","Sixes","Upper bonus",
+             "3 of a kind","4 of a kind","Two pairs","Small straight","Chance",
+             "Upper total","Lower total","TOTAL"),
+      score=NA,
+      score.available=NA,
+      stringsAsFactors = F
+    )
+  # else standard card
+  } else {
+    t <- data.frame(
+      half=c(1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3),
+      section=c("1s","2s","3s","4s","5s","6s","ub","3k","4k","fh","ss","ls","yz","ch","ut","lt","gt"),
+      name=c("Aces","Twos","Threes","Fours","Fives","Sixes","Upper bonus",
+             "3 of a kind","4 of a kind","Full house","Small straight","Long straight",
+             "Yahtzee","Chance",
+             "Upper total","Lower total","TOTAL"),
+      score=NA,
+      score.available=NA,
+      stringsAsFactors = F
+    )
+  }
 
   ## Build into list object
 
@@ -27,17 +42,17 @@ init_game <- function(ruleset) {
     rolls = 0,
     no_rolls_allowed = 3,
     no_dice = 5,
-    table=t
+    table=t,
+    scoring_function = calc_scores.yahtzee
   )
 
   ## Tweaks to setup for different rulesets
 
-  if (ruleset == "4 rolls")
+  if (ruleset == "4 rolls") {
     x$no_rolls_allowed <- 4
-  else if (ruleset == "5 rolls")
+  } else if (ruleset == "5 rolls") {
     x$no_rolls_allowed <- 5
-  else if (ruleset == "mini")
-  {
+  } else if (ruleset == "mini") {
     x$no_dice <- 4
   }
 

@@ -20,6 +20,7 @@
 #'    \item "standard" - Regular "Forced Joker" rules.
 #'    \item "4 rolls" - standard rules, but with 4 rolls allowed per turn.
 #'    \item "5 rolls" - standard rules, but with 5 rolls allowed per turn.
+#'    \item "mini" - version with only 4 dice.
 #' }
 #'
 #' @param work.mode Logical. If TRUE, then display the game in a manner which looks a bit
@@ -34,7 +35,7 @@
 #'
 yahtzR <- function(ruleset = "standard", work.mode=F) {
 
-  if (!ruleset %in% c("standard","4 rolls","5 rolls")) {
+  if (!ruleset %in% c("standard", "4 rolls", "5 rolls", "mini")) {
     message(paste0("Unknown ruleset option '",ruleset,"'"))
     return()
   }
