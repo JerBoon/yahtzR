@@ -1,11 +1,11 @@
 
-# Ruleset for the public domain game
+# Ruleset for the 4 dice game
 # Calculate available scores, given the current scorecard, and the dice rolls made
 # Uses two steps
 # 1 - Calculate available scores for all score types (including those already scored)
 # 2 - NA any additional scores which have already been taken
 
-calc_scores.yatzy <- function(game) {
+calc_scores.mitzy <- function(game) {
 
   t <- game$table
 
@@ -23,8 +23,6 @@ calc_scores.yatzy <- function(game) {
   x <- sort(table(game$dice),decreasing=T)
   t[t$section == "3k","score.available"] <- (x[1] >= 3)*(as.integer(names(x)[1])*3)
   t[t$section == "4k","score.available"] <- (x[1] >= 4)*(as.integer(names(x)[1])*4)
-  t[t$section == "yz","score.available"] <- (x[1] == 5)*50
-  t[t$section == "fh","score.available"] <- (x[1] == 3)*(x[2] == 2)*sum(game$dice)
   t[t$section == "1p","score.available"] <- (x[1] >= 2)*(max(as.integer(names(x)[x >= 2]))*2)
   t[t$section == "2p","score.available"] <- (x[1] >= 2)*(length(x) > 1 & x[2] >= 2)*
                                             (sum(as.integer(names(x)[1:2]))*2)
@@ -32,8 +30,7 @@ calc_scores.yatzy <- function(game) {
   #and then the staights..
   #calculate ordered string of distinct die values from the frequency table
   x2 <- paste(sort(names(x)),sep="",collapse="")
-  t[t$section == "ss","score.available"] <- (x2 == "12345")*15
-  t[t$section == "ls","score.available"] <- (x2 == "23456")*20
+  t[t$section == "ms","score.available"] <- (x2 %in% c("1234","2345","3456"))*sum(game$dice)
 
 
   ### ---- NA any options which have already been taken ----
@@ -44,13 +41,13 @@ calc_scores.yatzy <- function(game) {
 
 ## ---------------------------------------------------------------
 
-apply_bonuses.yatzy <- function(game) {
+apply_bonuses.mitzy <- function(game) {
 
   table <- game$table
 
   ## calculate upper bonus
-  if (sum(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"],na.rm=T) >= 63) {
-    table[table$section=="ub", "score"] <- 50
+  if (sum(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"],na.rm=T) >= 42) {
+    table[table$section=="ub", "score"] <- 25
   } else {
     if (sum(!is.na(table[table$section %in% c("1s","2s","3s","4s","5s","6s"),"score"])) == 6)
       table[table$section=="ub", "score"] <- 0
