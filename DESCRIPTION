@@ -1,7 +1,7 @@
 Package: yahtzR
 Type: Package
 Title: Play the game of yahtzee in an R session
-Version: 1.0.0
+Version: 1.0.1
 Author: Jer Boon
 Maintainer: Jer Boon <jer.booner@gmail.com>
 Description: 

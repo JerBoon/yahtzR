@@ -12,6 +12,8 @@
 #' as regular mode. It assumes that you have already played in regular (verbose) mode and
 #' therefore understand what inputs are available at the various prompts.
 #'
+#' Type "help" or "?" at any prompt for more information.
+#'
 #' @param work.mode Logical. If TRUE, then display the game in a manner which looks a bit
 #'   more like you're actually working!
 #'

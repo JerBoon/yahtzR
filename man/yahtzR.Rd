@@ -22,6 +22,8 @@ important machine learning or whatever.
 Work mode prints minimal help messages and prompting, but accepts exactly the same inputs
 as regular mode. It assumes that you have already played in regular (verbose) mode and
 therefore understand what inputs are available at the various prompts.
+
+Type "help" or "?" at any prompt for more information.
 }
 \examples{
   yahtzR(work.mode=T)

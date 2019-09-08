@@ -9,8 +9,10 @@
 make_choice <- function(game, work.mode=F) {
 
   print_card(game,work.mode)
+  if (!work.mode)
+    cat("Select scoring option\n")
 
-  something_went_wrong <- F
+  supply_more_info <- F
   choice <- NA
 
   table <- game$table
@@ -19,16 +21,13 @@ make_choice <- function(game, work.mode=F) {
   while (is.na(choice)) {
 
     if (!work.mode) {
-      if (!something_went_wrong) {
-        cat("Make score selection.\n")
-      } else {
-        cat("Unexpected input. Valid entries are:\n")
+      if (supply_more_info) {
         cat("- a scoring move from: ")
         cat(paste(sections.available, collapse=" "))
         cat("\n- type quit to, er, quit\n")
       }
     } else {
-      if (something_went_wrong)
+      if (supply_more_info)
         cat("??\n")
     }
 
@@ -36,13 +35,19 @@ make_choice <- function(game, work.mode=F) {
 
     if (input == "quit") {
       return(NA)
+    } else if (input %in% c("help","?")) {
+      supply_more_info <- T
+      if(!work.mode)
+        cat("Select which option to score using the 2 letter code. Valid entries are:\n")
     } else if (input %in% sections.available) {
       print(paste("you chose",input))
       table[table$section == input, "score"] <- table[table$section == input, "score.available"]
       table$score.available <- NA
       break
     } else {
-      something_went_wrong <- T
+      supply_more_info <- T
+      if(!work.mode)
+        cat("Unexpected input. Valid entries are:\n")
     }
 
   }

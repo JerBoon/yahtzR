@@ -5,7 +5,7 @@
 do_dice_rolls <- function(game,work.mode=F) {
 
   game$rolls <- 0
-  something_went_qrong <- F
+  supply_more_info <- F
 
   while(game$rolls < 3) {
 
@@ -14,7 +14,7 @@ do_dice_rolls <- function(game,work.mode=F) {
       game$rolls <- 1
     }
 
-    if (!something_went_qrong) {
+    if (!supply_more_info) {
       if (!work.mode) {
         cat("\014")
         print_card(game,work.mode)
@@ -22,8 +22,17 @@ do_dice_rolls <- function(game,work.mode=F) {
       } else {
         print_dice(game$dice, rolls=game$rolls, work.mode=work.mode)
       }
+    } else {
+      if (work.mode) {
+        cat("??\n")
+      } else {
+        cat("- integer representing the positions of dice to reroll - e.g. 123\n")
+        cat("- empty string (just hit return) to accept these dice\n")
+        cat("- type quit to, er, quit\n")
+      }
     }
-    something_went_qrong <- F
+
+      supply_more_info <- F
 
     input <- tolower(readline(prompt=">> "))
 
@@ -35,16 +44,18 @@ do_dice_rolls <- function(game,work.mode=F) {
     } else if (length(grep("^[1-5]+$",input)) == 1) {
       game$dice <- roll_dice_once(game$dice,which=input)
       game$rolls <- game$rolls + 1
-    } else {
-      if (work.mode) {
-        cat("??\n")
-      } else {
-        cat("Unexpected input. Valid entries are:\n")
-        cat("- integer representing the positions of dice to reroll - e.g. 123\n")
-        cat("- empty string (just hit return) to accept these dice\n")
-        cat("- type quit to, er, quit\n")
+    } else if (input %in% c("help","?")) {
+      if (!work.mode) {
+        cat("You can roll dice up to three times each turn.\n")
+        cat("Select the positions of all dice you wish to reroll. Valid entries are:\n")
       }
-      something_went_qrong <- T
+      supply_more_info <- T
+      next
+    } else {
+      if (!work.mode) {
+        cat("Unexpected input. Valid entries are:\n")
+      }
+      supply_more_info <- T
       next
     }
   }
@@ -81,7 +92,7 @@ roll_dice_once <- function (current = NA, which = NA) {
 # the roll number - which I appreciate is a slight concession to making it look *exactly*
 # like you're working... :)
 
-print_dice <- function(d, work.mode=F, rolls = 1) {
+print_dice <- function(d, work.mode=F, rolls) {
 
   if (max(is.na(d)))
     return()
