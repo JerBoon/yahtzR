@@ -36,9 +36,9 @@ Previous releases:
 Available variations:
 
 - Yahtzee (official game)
-  Uses the _Forced Joker_ rules, as described at 
+  - uses the _Forced Joker_ rules, as described at 
   [Wikipedia](https://en.wikipedia.org/wiki/Yahtzee).
 
 - Yatzy (public domain game)
-  As per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy).
+  - as per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy).
   
