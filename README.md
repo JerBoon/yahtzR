@@ -1,6 +1,6 @@
 # yahtzR
 
-Play the game of yahtzee in an R session.
+Play variations of the well-known dice rolling game in an R session.
 
 Because why not?
 
@@ -12,16 +12,18 @@ Previous releases:
 
 ```
 +--------------+----+ +--------------+----+
-|Aces          |   0| |3 of a kind   |    |
-|Twos          |    | |4 of a kind   |    |
-|Threes        |    | |Full house    |  25|
-|Fours         |    | |Small straight|    |
-|Fives         |  20| |Long straight |    |
-|Sixes         |    | |Yahtzee       |  50|
-|Upper bonus   |   0| |Chance        |  23|
+|Aces          |    | |1 pair        |    |
+|Twos          |    | |2 pairs       |    |
+|Threes        |    | |3 of a kind   |    |
+|Fours         |   8| |4 of a kind   |    |
+|Fives         |    | |Small straight|    |
+|Sixes         |  18| |Long straight |    |
+|Upper bonus   |    | |Full house    |    |
+|              |    | |Chance        |    |
+|              |    | |Yahtzee       |    |
 +--------------+----+ +--------------+----+
-|Upper total      20| |                   |
-|Lower total      98| |TOTAL           118|
+|Upper total      26| |Game: yatzy        |
+|Lower total       0| |TOTAL            26|
 +-------------------+ +-------------------+
    -----   -----   -----   -----   ----- 
   |  o  | |    o| |o   o| |o   o| |o   o|
@@ -31,5 +33,12 @@ Previous releases:
 ```
 ### Details
 
-Uses the _Forced Joker_ rules, as described at 
-[Wikipedia](https://en.wikipedia.org/wiki/Yahtzee).
+Available variations:
+
+- Yahtzee (official game)
+  Uses the _Forced Joker_ rules, as described at 
+  [Wikipedia](https://en.wikipedia.org/wiki/Yahtzee).
+
+- Yatzy (public domain game)
+  As per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy).
+  

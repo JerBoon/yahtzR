@@ -65,8 +65,6 @@ yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE)
   while( sum(is.na(game$table$score)) > 0 ) {
     game <- do_dice_rolls(game, work.mode)
 
-    print(class(game))
-
     if (class(game) != variation) {
       if (!work.mode) cat("bye then\n")
       return(invisible(NA))
