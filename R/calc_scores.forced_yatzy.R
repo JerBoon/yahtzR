@@ -11,10 +11,7 @@ calc_scores.forced_yatzy <- function(game) {
   t <- calc_scores.yatzy(game)
 
   first <- min(which(!is.na(t$score.available)))
-  print(first)
   t[-first,"score.available"] <- NA
-  print(t)
-  readline()
 
   return(t)
 }
