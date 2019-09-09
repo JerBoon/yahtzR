@@ -8,21 +8,35 @@
 
 make_choice <- function(game, work.mode=F) {
 
-  print_card(game,work.mode)
-  if (!work.mode)
+  table <- game$table
+
+  # If only one choice, do it, with relevant prompting
+  auto_pick <- F
+  if (sum(!is.na(table$score.available)) == 1)
+    auto_pick <- T
+
+  if (!auto_pick)
+    print_card(game,work.mode)
+
+  if (!work.mode & !auto_pick)
     cat("Select scoring option\n")
 
   supply_more_info <- F
   choice <- NA
 
-  table <- game$table
   sections.available <- table$section[!is.na(table$score.available)]
 
   while (is.na(choice)) {
 
-    if (sum(!is.na(table$score.available)) == 1) {
+    if (auto_pick) {
       # only one option available - choose it automatically
       input <- table[order(table$score.available,decreasing=T)[1],"section"]
+      # Message, and slight pause so the user gets some feedback rather
+      # than just seeing another dice roll..
+      if (!work.mode) {
+        cat(paste("Selecting",input))
+        Sys.sleep(0.6)
+      }
     } else {
       if (!work.mode) {
         if (supply_more_info) {
