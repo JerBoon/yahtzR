@@ -20,18 +20,22 @@ make_choice <- function(game, work.mode=F) {
 
   while (is.na(choice)) {
 
-    if (!work.mode) {
-      if (supply_more_info) {
-        cat("- a scoring move from: ")
-        cat(paste(sections.available, collapse=" "))
-        cat("\n- type quit to, er, quit\n")
-      }
+    if (sum(!is.na(table$score.available)) == 1) {
+      # only one option available - choose it automatically
+      input <- table[order(table$score.available,decreasing=T)[1],"section"]
     } else {
-      if (supply_more_info)
-        cat("??\n")
+      if (!work.mode) {
+        if (supply_more_info) {
+          cat("- a scoring move from: ")
+          cat(paste(sections.available, collapse=" "))
+          cat("\n- type quit to, er, quit\n")
+        }
+      } else {
+        if (supply_more_info)
+          cat("??\n")
+      }
+      input <- tolower(readline(prompt=">> "))
     }
-
-    input <- tolower(readline(prompt=">> "))
 
     if (input == "quit") {
       return(NA)
