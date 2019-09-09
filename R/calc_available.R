@@ -10,7 +10,6 @@ calc_available <- function(game) {
   ### ---- first calc possible scores for all scoring patterns, using the appropriate rules ----
 
   t <- calc_scores(game)
-  #t <- calc_scores.yahtzee(game)
 
   game$table <- t
   return(game)

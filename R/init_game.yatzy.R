@@ -12,7 +12,7 @@ init_game.yatzy <- function(game, no_rolls_allowed) {
               "1p","2p","3k","4k","ss","ls","fh","ch","yz","ut","lt","gt"),
     name=c("Aces","Twos","Threes","Fours","Fives","Sixes","Upper bonus",
            "1 pair","2 pairs","3 of a kind","4 of a kind","Small straight","Large straight",
-           "Full house","Chance","Yahtzee",
+           "Full house","Chance","Yatzy",
            "Upper total","Lower total","TOTAL"),
     score=NA,
     score.available=NA,

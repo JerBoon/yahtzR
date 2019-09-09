@@ -1,12 +1,12 @@
 Package: yahtzR
 Type: Package
-Title: Play the game of yahtzee in an R session
+Title: Play variations of the well-known dice rolling game in an R session
 Version: 1.2.1
 Author: Jer Boon
 Maintainer: Jer Boon <jer.booner@gmail.com>
 Description: 
-  Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
-  important machine learning or whatevs.
+  This is a classic dice rolling game and, heck, why not play it in your R
+  console instead of doing some important machine learning or whatevs.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

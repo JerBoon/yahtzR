@@ -29,11 +29,11 @@ game variation.}
   N.B. I accept no responsibility if your boss still notices!}
 }
 \description{
-Play the game of yahtzee and/or some of its variations in an R session
+Play variations of the well-known dice rolling game in an R session.
 }
 \details{
-Yahtzee is a classic dice rolling game and, heck, why not play it in R instead of doing some
-important machine learning or whatever.
+Yatzy (and variants) are a classic dice rolling game and, heck, why not play then in
+an R console instead of doing some important machine learning or whatever.
 
 Work mode prints minimal help messages and prompting, but accepts exactly the same inputs
 as regular mode. It assumes that you have already played in regular (verbose) mode and
