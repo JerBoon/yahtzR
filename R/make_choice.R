@@ -15,8 +15,7 @@ make_choice <- function(game, work.mode=F) {
   if (sum(!is.na(table$score.available)) == 1)
     auto_pick <- T
 
-  if (!auto_pick)
-    print_card(game,work.mode)
+  print_card(game,work.mode)
 
   if (!work.mode & !auto_pick)
     cat("Select scoring option\n")
