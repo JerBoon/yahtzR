@@ -21,7 +21,7 @@ Previous releases:
 |Sixes         |  18| |Long straight |    |
 |Upper bonus   |    | |Full house    |    |
 |              |    | |Chance        |    |
-|              |    | |Yahtzee       |    |
+|              |    | |Yatzy         |    |
 +--------------+----+ +--------------+----+
 |Upper total      26| |Game: yatzy        |
 |Lower total       0| |TOTAL            26|
