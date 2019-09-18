@@ -26,6 +26,7 @@ init_game.maxi_yatzy <- function(game, no_rolls_allowed) {
 
   game$dice = NA
   game$rolls = 0
+  game$bonus_rolls = 0
   game$no_rolls_allowed = no_rolls_allowed
   game$no_dice = 6
   game$table=t

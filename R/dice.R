@@ -7,7 +7,12 @@ do_dice_rolls <- function(game,work.mode=F) {
   game$rolls <- 0
   supply_more_info <- F
 
-  while(game$rolls < game$no_rolls_allowed) {
+  rolls_allowed <- game$no_rolls_allowed
+  if ("bonus_rolls" %in% names(game))
+    rolls_allowed <- rolls_allowed + game$bonus_rolls
+
+
+  while(game$rolls < rolls_allowed ) {
 
     if (game$rolls == 0) {
       game$dice <- roll_dice_once(no_dice = game$no_dice)
@@ -19,6 +24,8 @@ do_dice_rolls <- function(game,work.mode=F) {
         cat("\014")
         print_card(game,work.mode)
         cat(paste0("Roll ",game$rolls,": Enter positions of dice to reroll\n"))
+        if ("bonus_rolls" %in% names(game))
+          cat(paste("(you have", game$bonus_rolls,"bonus rolls banked)\n"))
       } else {
         print_dice(game$dice, rolls=game$rolls, work.mode=work.mode)
       }
@@ -37,7 +44,6 @@ do_dice_rolls <- function(game,work.mode=F) {
     input <- tolower(readline(prompt=">> "))
 
     if (input == "") {
-      game$rolls <- game$no_rolls_allowed
       break
     } else if (input == "quit") {
       return(NA)
@@ -59,6 +65,10 @@ do_dice_rolls <- function(game,work.mode=F) {
       next
     }
   }
+
+  if ("bonus_rolls" %in% names(game))
+    game$bonus_rolls <- rolls_allowed - game$rolls
+#  game$rolls <- game$no_rolls_allowed
 
   return(game)
 }
