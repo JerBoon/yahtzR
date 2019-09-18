@@ -35,7 +35,7 @@ calc_scores.maxi_yatzy <- function(game) {
   t[t$section == "1p","score.available"] <- {if (x[1] >= 2) (max(as.integer(names(x)[x >= 2]))*2) else 0}
   t[t$section == "2p","score.available"] <- (x[1] >= 2)*(length(x) > 1 & x[2] >= 2)*
                                             (sum(as.integer(names(x)[1:2]))*2)
-  t[t$section == "3p","score.available"] <- (x[1] == 2)*(x[2] == 2)*(x[3] == 2)*
+  t[t$section == "3p","score.available"] <- (x[1] == 2)*(length(x) > 1 & x[2] == 2)*(length(x) > 2 & x[3] == 2)*
                                             sum(game$dice)
 
   #and then the staights..
