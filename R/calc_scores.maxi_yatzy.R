@@ -26,11 +26,12 @@ calc_scores.maxi_yatzy <- function(game) {
   t[t$section == "5k","score.available"] <- (x[1] == 5)*(as.integer(names(x)[1])*5)
   t[t$section == "my","score.available"] <- (x[1] == 6)*100
   t[t$section == "fh","score.available"] <- (x[1] >= 3)*(length(x) > 1 & x[2] >= 2)*
-                                            sum(game$dice)
+                                            (as.integer(names(x)[1])*3 + as.integer(names(x)[2])*2)
   t[t$section == "vl","score.available"] <- (x[1] == 3)*(x[2] == 3)*
                                             sum(game$dice)
   t[t$section == "tw","score.available"] <- (x[1] == 4)*(x[2] == 2)*
                                             sum(game$dice)
+
   t[t$section == "1p","score.available"] <- {if (x[1] >= 2) (max(as.integer(names(x)[x >= 2]))*2) else 0}
   t[t$section == "2p","score.available"] <- (x[1] >= 2)*(length(x) > 1 & x[2] >= 2)*
                                             (sum(as.integer(names(x)[1:2]))*2)
@@ -40,8 +41,8 @@ calc_scores.maxi_yatzy <- function(game) {
   #and then the staights..
   #calculate ordered string of distinct die values from the frequency table
   x2 <- paste(sort(names(x)),sep="",collapse="")
-  t[t$section == "ss","score.available"] <- (x2 == "12345")*15
-  t[t$section == "ls","score.available"] <- (x2 == "23456")*20
+  t[t$section == "ss","score.available"] <- (x2 %in% c("12345","123456"))*15
+  t[t$section == "ls","score.available"] <- (x2 %in% c("23456","123456"))*20
   t[t$section == "fs","score.available"] <- (x2 == "123456")*21
 
 
