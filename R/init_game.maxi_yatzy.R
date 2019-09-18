@@ -7,7 +7,7 @@ init_game.maxi_yatzy <- function(game, no_rolls_allowed) {
   ## table for standard game scorecard
 
   t <- data.frame(
-    half=c(1,1,1,1,1,1,1, 2,2,2,2,2,2,2,2,2,2,2,2,2,2, 3,3,3),
+    half=c(1,1,1,1,1,1,1, 2,2,2,2,2,2,2,2,2,2,2,2,2,2, 99,99,99),
     section=c("1s","2s","3s","4s","5s","6s","ub",
               "1p","2p","3p","3k","4k","5k",
               "ss","ls","fs","fh","vl","tw","my","ch","ut","lt","gt"),
