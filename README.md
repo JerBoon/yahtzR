@@ -4,9 +4,10 @@ Play variations of the well-known dice rolling game in an R session.
 
 Because why not?
 
-Latest release: [v1.2.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.2.0)
+Latest release: [v1.3.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.3.0)
 
 Previous releases:
+- [v1.2.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.2.0)
 - [v1.1.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.1.0)
 - [v1.0.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.0.0)
 
