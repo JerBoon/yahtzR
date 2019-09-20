@@ -44,6 +44,10 @@ Available variations:
 - Yatzy (public domain game)
   - as per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy).
   
+- Forced Yatzy (public domain game)
+  - same as regular Yatzy, but where you are compelled to fill the score card in the order in
+    which the options appear.
+  
 - Maxi Yatzy (6 dice version of Yatzy)
   - as per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy#Maxi_Yatzy).
 
