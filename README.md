@@ -44,6 +44,9 @@ Available variations:
 - Yatzy (public domain game)
   - as per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy).
   
+- Maxi Yatzy (6 dice version of Yatzy)
+  - as per [Wikipedia](https://en.wikipedia.org/wiki/Yatzy#Maxi_Yatzy).
+
 - Mitzy (a 4-dice derivative-ish of Yatzy)
   - Upper bonus value is 25, awarded for total of 42 or more.
   - Introduces a "Mini straight" which is a 4 number straight, scores per the dice roll total.
