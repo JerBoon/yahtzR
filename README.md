@@ -54,3 +54,9 @@ Available variations:
 - Mitzy (a 4-dice derivative-ish of Yatzy)
   - Upper bonus value is 25, awarded for total of 42 or more.
   - Introduces a "Mini straight" which is a 4 number straight, scores per the dice roll total.
+
+### Coming soon...
+
+Curently in development... v1.4.0 will come with graphical outputs of some kind
+
+![image](https://user-images.githubusercontent.com/23141865/65390567-4110ee80-dd58-11e9-83b0-9f6d55874592.png)
