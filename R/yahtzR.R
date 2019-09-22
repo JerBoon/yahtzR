@@ -37,6 +37,11 @@
 #'
 #'   N.B. I accept no responsibility if your boss still notices!
 #'
+#' @param graphical Logical, FALSE by default. If set, plots your scorecard as a ggplot.
+#'   Will vary the outputs, both to entertain you, and to make it look like you're
+#'   developing some interesting charts (useful in work mode?).
+#'   Requires installation of ggplot and dependencies.
+#'
 #' @export
 #'
 #' @examples
@@ -45,7 +50,7 @@
 #'   #This is just a silly idea :)
 #'   yahtzR(variation="yatzy", rolls_per_turn = 10)
 #'
-yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE) {
+yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE, graphical = FALSE) {
 
   if (!variation %in% c("yahtzee", "yatzy", "mitzy", "forced_yatzy", "maxi_yatzy")) {
     message(paste0("Unknown rule variation option '",variation,"'"))
@@ -59,6 +64,14 @@ yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE)
     message("")
     message("initialising...")
     Sys.sleep(1)
+  }
+
+  if (graphical) {
+    # test for package
+    if (!requireNamespace("ggplot2", quietly = TRUE)) {
+      message("ggplot2 package needed for this option. Please install it to enable this option.")
+      return()
+    }
   }
 
   # initialise
@@ -83,7 +96,7 @@ yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE)
       return(invisible(NA))
     }
 
-    print_card(game,work.mode)
+    print_card(game,work.mode, graphical)
   }
 
   cat("\n")

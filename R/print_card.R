@@ -5,7 +5,10 @@
 # Also displays extra information in the card (score you'd increase by if chosen)
 # if it precedes an input to select your scoring move.
 
-print_card <- function(game,work.mode=F) {
+print_card <- function(game,work.mode=F, graphical=F) {
+
+  if (graphical)
+    plot_card(game,work.mode)
 
   if (work.mode) {
 
