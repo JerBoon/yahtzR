@@ -40,7 +40,7 @@
 #' @param graphical Logical, TRUE by default. If set, plots your scorecard as a ggplot.
 #'   Will vary the outputs, both to entertain you, and to make it look like you're
 #'   developing some interesting charts (useful in work mode?).
-#'   Requires installation of ggplot and dependencies.
+#'   Requires installation of ggplot2 and dependencies.
 #'
 #' @export
 #'

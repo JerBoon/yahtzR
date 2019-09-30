@@ -5,7 +5,7 @@
 \title{yahtzR}
 \usage{
 yahtzR(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE,
-  graphical = FALSE)
+  graphical = TRUE)
 }
 \arguments{
 \item{variation}{Character value. Name of game variation and ruleset to apply. Valid options are:
@@ -31,10 +31,10 @@ game variation.}
 
   N.B. I accept no responsibility if your boss still notices!}
 
-\item{graphical}{Logical, FALSE by default. If set, plots your scorecard as a ggplot.
+\item{graphical}{Logical, TRUE by default. If set, plots your scorecard as a ggplot.
 Will vary the outputs, both to entertain you, and to make it look like you're
 developing some interesting charts (useful in work mode?).
-Requires installation of ggplot and dependencies.}
+Requires installation of ggplot2 and dependencies.}
 }
 \description{
 Play variations of the well-known dice rolling game in an R session.
