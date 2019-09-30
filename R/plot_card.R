@@ -27,7 +27,7 @@ plot_card <- function(game, work.mode) {
   random_colour <- sample(c("red","green","orange","blue","black","grey"),1)
 
   # Print a random chart
-  style <-  sample(1:5,1)
+  style <-  sample(1:7,1)
 
   # ------------------------
 
@@ -111,6 +111,25 @@ plot_card <- function(game, work.mode) {
         ggplot2::theme(axis.text.x = ggplot2::element_text(angle=90, hjust=1, vjust=0.5))
 
   }
+  else if (style %in% c(6,7))
+  {
+    #Progress worm - inspired by watching cricket! :)
+
+    gg <-
+      ggplot2::ggplot(gg.dat[!is.na(gg.dat$score.sequence),],
+                      ggplot2::aes(x=factor(score.sequence),y=score.running)) +
+      base_theme +
+      ggplot2::scale_fill_brewer(palette = base_palette) +
+      ggplot2::geom_line(ggplot2::aes(group="1"),size=1.5,alpha=0.7,color=random_colour) +
+      ggplot2::geom_point(size=3,color=random_colour) +
+      ggplot2::geom_text(ggplot2::aes(label=label),hjust=-0.2, angle=-15) +
+      ggplot2::scale_y_continuous(limits=c(0,max(gg.dat$score.running))) +
+      ggplot2::scale_x_discrete(expand=ggplot2::expand_scale(add=1)) +
+      ggplot2::ylab("Cumulative total") +
+      ggplot2::xlab("Turn") +
+      ggplot2::theme(legend.position = "none")
+
+  }
 
   # Standard titles
   if (work.mode)
@@ -121,5 +140,4 @@ plot_card <- function(game, work.mode) {
                                 subtitle = paste("Total score = ",game$table[game$table$section == "gt", "score"]))
 
   suppressWarnings(print(gg))
-
 }

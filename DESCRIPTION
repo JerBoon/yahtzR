@@ -1,7 +1,7 @@
 Package: yahtzR
 Type: Package
 Title: Play variations of the well-known dice rolling game in an R session
-Version: 1.3.3
+Version: 1.3.4
 Author: Jer Boon
 Maintainer: Jer Boon <jer.booner@gmail.com>
 Description: 

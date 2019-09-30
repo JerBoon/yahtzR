@@ -56,6 +56,8 @@ make_choice <- function(game, work.mode=F) {
       supply_more_info <- T
       if(!work.mode)
         cat("Select which option to score using the 2 letter code. Valid entries are:\n")
+    } else if (input == "test") {
+      print(game$table)
     } else if (input %in% sections.available) {
       print(paste("you chose",input))
       table[table$section == input, "score"] <- table[table$section == input, "score.available"]
@@ -80,6 +82,10 @@ make_choice <- function(game, work.mode=F) {
   table[table$section=="ut", "score"] <- sum(table[table$half == 1,"score"],na.rm=T)
   table[table$section=="lt", "score"] <- sum(table[table$half == 2,"score"],na.rm=T)
   table[table$section=="gt", "score"] <- sum(table[table$half %in% c(1,2),"score"],na.rm=T)
+
+  #update running total and choice order info
+  table[table$section == input, "score.running"] <- table[table$section=="gt", "score"]
+  table[table$section == input, "score.sequence"] <- sum(!is.na(table$score.running))
 
   game$table <- table
   game$dice <- NA
