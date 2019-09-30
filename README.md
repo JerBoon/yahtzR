@@ -4,6 +4,8 @@ Play variations of the well-known dice rolling game in an R session.
 
 Because why not?
 
+![image](https://user-images.githubusercontent.com/23141865/65917864-49100480-e3d0-11e9-9f81-2db08b69de28.png)
+
 Latest release: [v1.3.0](https://github.com/JerBoon/yahtzR/releases/tag/v1.3.0)
 
 Previous releases:
