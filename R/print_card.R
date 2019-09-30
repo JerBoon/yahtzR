@@ -80,7 +80,7 @@ print_card <- function(game,work.mode=F, graphical=F) {
     na0 <- function(x) { if (is.na(x)) 0 else x }
 
     if (add.totals) {
-      cat(sprintf("|Upper total     %3d| |Game: %-13s|\n", na0(p[p$section=="ut","score"]), class(game)))
+      cat(sprintf("|Upper total     %3d| |Game: %-13s|\n", na0(p[p$section=="ut","score"]), game$title))
       cat(sprintf("|Lower total    %4d| |TOTAL          %4d|\n",
                   na0(p[p$section=="lt","score"]),
                   na0(p[p$section=="gt","score"])))

@@ -37,7 +37,7 @@
 #'
 #'   N.B. I accept no responsibility if your boss still notices!
 #'
-#' @param graphical Logical, FALSE by default. If set, plots your scorecard as a ggplot.
+#' @param graphical Logical, TRUE by default. If set, plots your scorecard as a ggplot.
 #'   Will vary the outputs, both to entertain you, and to make it look like you're
 #'   developing some interesting charts (useful in work mode?).
 #'   Requires installation of ggplot and dependencies.
@@ -50,7 +50,7 @@
 #'   #This is just a silly idea :)
 #'   yahtzR(variation="yatzy", rolls_per_turn = 10)
 #'
-yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE, graphical = FALSE) {
+yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE, graphical = TRUE) {
 
   if (!variation %in% c("yahtzee", "yatzy", "mitzy", "forced_yatzy", "maxi_yatzy")) {
     message(paste0("Unknown rule variation option '",variation,"'"))
@@ -63,15 +63,18 @@ yahtzR <- function(variation = "yahtzee", rolls_per_turn = 3, work.mode = FALSE,
     message(paste0("Welcome to yahtzR v",packageVersion("yahtzR")))
     message("")
     message("initialising...")
-    Sys.sleep(1)
   }
 
   if (graphical) {
     # test for package
     if (!requireNamespace("ggplot2", quietly = TRUE)) {
-      message("ggplot2 package needed for this option. Please install it to enable this option.")
-      return()
+      message("ggplot2 package needed for graphical option. Running in text mode only.")
+      graphical=FALSE
     }
+  }
+
+  if (!work.mode) {
+    Sys.sleep(1)
   }
 
   # initialise

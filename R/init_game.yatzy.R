@@ -27,6 +27,7 @@ init_game.yatzy <- function(game, no_rolls_allowed) {
   game$no_rolls_allowed = no_rolls_allowed
   game$no_dice = 5
   game$table=t
+  game$title <- "Yatzy"
 
   ## Done
 
