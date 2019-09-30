@@ -5,6 +5,7 @@ plot_card <- function(game, work.mode) {
   # I could dplyr this if I wanted, but heh..
   gg.dat <- game$table
   gg.dat <- gg.dat[gg.dat$half != 99,]
+  gg.dat$score <- as.integer(gg.dat$score)
   names(gg.dat)[names(gg.dat) == {if (work.mode) "section" else "name"}] <- "label"
   gg.dat$label <- factor(gg.dat$label, levels=gg.dat$label, ordered=T)
   #score with NAs coorced to 0 - some charts work better with this
