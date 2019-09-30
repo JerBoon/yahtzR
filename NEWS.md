@@ -1,3 +1,12 @@
+# yahtzR 1.3.3
+
+Added new graphical drawing mode, and made it default.
+
+Added a randomisation of 5 different charting modes, with various
+randomised elements within.
+
+Added top-level user function calls for the different game variations.
+
 # yahtzR 1.3.0
 
 Added "maxi_yatzy" game option - the game with 6 dice, and the ability to store

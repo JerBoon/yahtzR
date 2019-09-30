@@ -31,10 +31,10 @@ game variation.}
 
   N.B. I accept no responsibility if your boss still notices!}
 
-\item{graphical}{Logical, TRUE by default. If set, plots your scorecard as a ggplot.
+\item{graphical}{Logical, TRUE by default. If set, and ggplot2 is installed, the game
+also plots your scorecard as a ggplot.
 Will vary the outputs, both to entertain you, and to make it look like you're
-developing some interesting charts (useful in work mode?).
-Requires installation of ggplot2 and dependencies.}
+developing some interesting charts (useful in work mode?).}
 }
 \description{
 Play variations of the well-known dice rolling game in an R session.
